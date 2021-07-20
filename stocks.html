@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Stocks Page</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+        body{
+            background: #f2f2f2;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+        }
+
+        .searchTerm {
+            width: 100%;
+            border: 3px solid black;
+            border-right: none;
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .searchTerm:focus{
+            color: black;
+        }
+
+        .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid black;
+            background:black;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap{
+            width: 30%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    </head>
+  <body>
+    <h1>Stock Page</h1>
+    <div class="wrap">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search stock by ticker name">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+    
+    <h2>HTML Table</h2>
+
+    <table>
+        <tr>
+            <th>Stock ID</th>
+            <th>Company ID</th>
+            <th>Stock Symbol</th>
+            <th>Share Price</th>
+            <th>Market Cap</th>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>101</td>
+            <td>GME</td>
+            <td>172.99</td>
+            <td>22.08B</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>102</td>
+            <td>AMC</td>
+            <td>34.92</td>
+            <td>26.56B</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>103</td>
+            <td>RBLX</td>
+            <td>79.50</td>
+            <td>53.41B</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+  </body>
+</html>
