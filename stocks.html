@@ -1,88 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
+    <link rel="stylesheet" href="csstyle.css">
     <meta charset="utf-8">
-    <title>Stocks Search</title>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+ <div class="topnav">
+        <a href="https://web.engr.oregonstate.edu/~yehudao/index.html">Home</a>
+        <a href="https://web.engr.oregonstate.edu/~yehudao/investors">Investors</a>
+        <a class="active" href="https://web.engr.oregonstate.edu/~yehudao/stocks">Stocks</a>
+        <a href="https://web.engr.oregonstate.edu/~yehudao/orders">Orders</a>
+</div>
+</div>
+    <title>Stocks</title>
+</head>
+<body>
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
+    <h1>Stocks</h1>
+    <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Stock</button>
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content" action="/action_page.php">
+        <div class="container">
+          <hr>
 
-        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+          <label for="pid"><b>Company ID</b></label>
+          <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
 
+          <label for="osym"><b>Stock Symbol</b></label>
+          <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
 
-/* search bar style from https://codepen.io/huange/pen/rbqsD */
-        body{
-            background: #f2f2f2;
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .search {
-            width: 100%;
-            position: relative;
-            display: flex;
-        }
-
-        .searchTerm {
-            width: 100%;
-            border: 3px solid black;
-            border-right: none;
-            padding: 5px;
-            height: 20px;
-            border-radius: 5px 0 0 5px;
-            outline: none;
-            color: #9DBFAF;
-        }
-
-        .searchTerm:focus{
-            color: black;
-        }
-
-        .searchButton {
-            width: 40px;
-            height: 36px;
-            border: 1px solid black;
-            background:black;
-            text-align: center;
-            color: #fff;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        /*Resize the wrap to see the search bar change!*/
-        .wrap{
-            width: 30%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    </style>
-    </head>
-  <body>
-    <h1>Stock Page</h1>
-    <div class="wrap">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="Search stock by ticker name">
-            <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-            </button>
+          <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submit</button>
         </div>
     </div>
-    
+</form>
+</div>
+
+<div class="ordert">
+    <div class="search">
+        <input type="text" class="searchTerm" placeholder="Search by Stock Symbol">
+        <button type="submit" class="searchButton">
+            <i class="fa fa-search"></i>
+        </button>
+    </div>
     <table>
         <tr>
             <th>Stock ID</th>
@@ -98,6 +59,8 @@
             <td>GME</td>
             <td>172.99</td>
             <td>22.08B</td>
+            <td><button class="tablebtn">Update</button> </td>
+            <td><button class="tablebtn">Delete</button> </td>
         </tr>
         <tr>
             <td>2</td>
@@ -105,6 +68,8 @@
             <td>AMC</td>
             <td>34.92</td>
             <td>26.56B</td>
+            <td><button class="tablebtn">Update</button> </td>
+            <td><button class="tablebtn">Delete</button> </td>
         </tr>
         <tr>
             <td>3</td>
@@ -112,28 +77,26 @@
             <td>RBLX</td>
             <td>79.50</td>
             <td>53.41B</td>
+            <td><button class="tablebtn">Update</button> </td>
+            <td><button class="tablebtn">Delete</button> </td>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-  </body>
+    </td>
+</tr>
+</table>
+</div>
+
+
+<script>
+    var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+}
+}
+</script>
+</body>
 </html>
+
+
