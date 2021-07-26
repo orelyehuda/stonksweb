@@ -7,16 +7,16 @@
         <a href="https://web.engr.oregonstate.edu/~yehudao/index.html">Home</a>
         <a href="https://web.engr.oregonstate.edu/~yehudao/investors">Investors</a>
         <a href="https://web.engr.oregonstate.edu/~yehudao/portfolios">Portfolios</a>
-        <a href="https://web.engr.oregonstate.edu/~yehudao/etfs">ETFs</a>
-        <a class="active" href="https://web.engr.oregonstate.edu/~yehudao/stocks">Stocks</a>
+        <a class="active" href="https://web.engr.oregonstate.edu/~yehudao/etfs">ETFs</a>
+        <a href="https://web.engr.oregonstate.edu/~yehudao/stocks">Stocks</a>
         <a href="https://web.engr.oregonstate.edu/~yehudao/orders">Orders</a>
 </div>
-    <title>Stocks</title>
+    <title>ETFs</title>
 </head>
 <body>
 
-    <h1>Stocks</h1>
-    <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Stock</button>
+    <h1>ETFs</h1>
+    <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New ETF</button>
 
     <div id="id01" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -24,11 +24,11 @@
         <div class="container">
           <hr>
 
-          <label for="pid"><b>Company ID</b></label>
+          <label for="pid"><b>Stock ID</b></label>
           <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
 
-          <label for="osym"><b>Stock Symbol</b></label>
-          <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
+          <label for="osym"><b>ETF Symbol</b></label>
+          <input type="text" placeholder="Enter the ETF SYM" name="osym" required>
 
           <div class="clearfix">
             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
@@ -40,44 +40,37 @@
 
 <div class="ordert">
     <div class="search">
-        <input type="text" class="searchTerm" placeholder="Search by Stock Symbol">
+        <input type="text" class="searchTerm" placeholder="Search by ETF Symbol">
         <button type="submit" class="searchButton">
             <i class="fa fa-search"></i>
         </button>
     </div>
     <table>
         <tr>
+            <th>ETF ID</th>
             <th>Stock ID</th>
-            <th>Company ID</th>
-            <th>Stock Symbol</th>
-            <th>Share Price</th>
-            <th>Market Cap</th>
+            <th>ETF Symbol</th>
+
 
         </tr>
         <tr>
             <td>1</td>
-            <td>101</td>
-            <td>GME</td>
-            <td>172.99</td>
-            <td>22.08B</td>
+            <td>0101</td>
+            <td>LLX</td>
             <td><button class="tablebtn">Update</button> </td>
             <td><button class="tablebtn">Delete</button> </td>
         </tr>
         <tr>
             <td>2</td>
-            <td>102</td>
-            <td>AMC</td>
-            <td>34.92</td>
-            <td>26.56B</td>
+            <td>0102</td>
+            <td>PXAA</td>
             <td><button class="tablebtn">Update</button> </td>
             <td><button class="tablebtn">Delete</button> </td>
         </tr>
         <tr>
             <td>3</td>
-            <td>103</td>
-            <td>RBLX</td>
-            <td>79.50</td>
-            <td>53.41B</td>
+            <td>0103</td>
+            <td>SSSX</td>
             <td><button class="tablebtn">Update</button> </td>
             <td><button class="tablebtn">Delete</button> </td>
         </tr>
