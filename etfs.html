@@ -16,7 +16,43 @@
 <body>
 
     <h1>ETFs</h1>
-    <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New ETF</button>
+
+<div class="ordert">
+    <div class="search">
+        <input type="text" class="searchTerm" placeholder="Search by ETF Symbol">
+        <button type="submit" class="searchButton">
+        </button>
+    </div>
+    <table>
+        <tr>
+            <th>ETF ID</th>
+            <th>Stock ID</th>
+            <th>ETF Symbol</th>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0101</td>
+            <td>LLX</td>
+            <td><button class="tablebtnc">Delete</button> </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>0102</td>
+            <td>PXAA</td>
+            <td><button class="tablebtnc">Delete</button> </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>0103</td>
+            <td>SSSX</td>
+            <td><button class="tablebtnc">Delete</button> </td>
+        </tr>
+    </td>
+</tr>
+</table>
+</div>
+<button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New ETF</button>
 
     <div id="id01" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -37,48 +73,6 @@
     </div>
 </form>
 </div>
-
-<div class="ordert">
-    <div class="search">
-        <input type="text" class="searchTerm" placeholder="Search by ETF Symbol">
-        <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-        </button>
-    </div>
-    <table>
-        <tr>
-            <th>ETF ID</th>
-            <th>Stock ID</th>
-            <th>ETF Symbol</th>
-
-
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>0101</td>
-            <td>LLX</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtn">Delete</button> </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>0102</td>
-            <td>PXAA</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtn">Delete</button> </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>0103</td>
-            <td>SSSX</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtn">Delete</button> </td>
-        </tr>
-    </td>
-</tr>
-</table>
-</div>
-
 
 <script>
     var modal = document.getElementById('id01');

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: techmono;
+  src: url(fonts/techmono.ttf);
+}
+
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -29,6 +34,7 @@ body{
 
 .searchTerm {
     width: 100%;
+    float:left;
     border: 3px solid black;
     border-right: none;
     padding: 5px;
@@ -36,6 +42,7 @@ body{
     border-radius: 5px 0 0 5px;
     outline: none;
     color: #9DBFAF;
+    margin: 0 auto;
 }
 
 .searchTerm:focus{
@@ -52,6 +59,8 @@ body{
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
+    margin: 0 auto;
+
 }
 
 /*Resize the wrap to see the search bar change!*/
@@ -126,4 +135,14 @@ button {
 .tablebtn{
     width: 90%;
     padding-right: 20px;
+}
+
+.tablebtnc{
+    width: 90%;
+    padding-right: 20px;
+    background-color: red;  
+}
+
+h1{
+  text-align: center;
 }

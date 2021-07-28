@@ -16,27 +16,7 @@
 <body>
 
     <h1>Stocks</h1>
-    <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Stock</button>
-
-    <div id="id01" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content" action="/action_page.php">
-        <div class="container">
-          <hr>
-
-          <label for="pid"><b>Company ID</b></label>
-          <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
-
-          <label for="osym"><b>Stock Symbol</b></label>
-          <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
-
-          <div class="clearfix">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Submit</button>
-        </div>
-    </div>
-</form>
-</div>
+    
 
 <div class="ordert">
     <div class="search">
@@ -61,7 +41,7 @@
             <td>172.99</td>
             <td>22.08B</td>
             <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtn">Delete</button> </td>
+            <td><button class="tablebtnc">Delete</button> </td>
         </tr>
         <tr>
             <td>2</td>
@@ -70,7 +50,7 @@
             <td>34.92</td>
             <td>26.56B</td>
             <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtn">Delete</button> </td>
+            <td><button class="tablebtnc">Delete</button> </td>
         </tr>
         <tr>
             <td>3</td>
@@ -79,13 +59,33 @@
             <td>79.50</td>
             <td>53.41B</td>
             <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtn">Delete</button> </td>
+            <td><button class="tablebtnc">Delete</button> </td>
         </tr>
     </td>
 </tr>
 </table>
 </div>
+<button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Stock</button>
 
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content" action="/action_page.php">
+        <div class="container">
+          <hr>
+
+          <label for="pid"><b>Company ID</b></label>
+          <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
+
+          <label for="osym"><b>Stock Symbol</b></label>
+          <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
+
+          <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submit</button>
+        </div>
+    </div>
+</form>
+</div>
 
 <script>
     var modal = document.getElementById('id01');
