@@ -1,82 +1,97 @@
 table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 
-        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-        body{
-            background: #f2f2f2;
-            font-family: 'Open Sans', sans-serif;
-        }
+body{
+    background: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+}
 
-        .search {
-            width: 100%;
-            position: relative;
-            display: flex;
-        }
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
 
-        .searchTerm {
-            width: 100%;
-            border: 3px solid black;
-            border-right: none;
-            padding: 5px;
-            height: 20px;
-            border-radius: 5px 0 0 5px;
-            outline: none;
-            color: #9DBFAF;
-        }
+.searchTerm {
+    width: 100%;
+    border: 3px solid black;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
 
-        .searchTerm:focus{
-            color: black;
-        }
+.searchTerm:focus{
+    color: black;
+}
 
-        .searchButton {
-            width: 40px;
-            height: 36px;
-            border: 1px solid black;
-            background:black;
-            text-align: center;
-            color: #fff;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-            font-size: 20px;
-        }
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid black;
+    background:black;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
 
-        /*Resize the wrap to see the search bar change!*/
-        .wrap{
-            width: 30%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 /*Nav bar */
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
+
+.topnav{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+    background-color: #333;
+
+}
+.topnav li{
+    display:inline;
+}
+.topnav a{
+    display:inline-block;
+    padding:10px;
 }
 
 .topnav a {
-  float: left;
   color: #f2f2f2;
+  float
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
+  width:40;
 }
 
 .topnav a:hover {
@@ -87,4 +102,28 @@ table {
 .topnav a.active {
   background-color: #04AA6D;
   color: white;
+}
+
+/* buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+}
+.signupbtn{
+    margin-top: 10px;
+}
+.searchbtn{
+    width: 50%;
+}
+.cancelbtn{
+    background-color: red;  
+}
+.tablebtn{
+    width: 90%;
+    padding-right: 20px;
 }

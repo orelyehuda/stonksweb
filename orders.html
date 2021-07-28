@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="csstyle.css">
     <meta charset="utf-8">
  <div class="topnav">
+
         <a href="https://web.engr.oregonstate.edu/~yehudao/index.html">Home</a>
         <a href="https://web.engr.oregonstate.edu/~yehudao/investors">Investors</a>
         <a href="https://web.engr.oregonstate.edu/~yehudao/portfolios">Portfolios</a>
@@ -16,30 +17,6 @@
 <body>
 
     <h1>Order History</h1>
-    <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Order</button>
-
-    <div id="id01" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content" action="/action_page.php">
-        <div class="container">
-          <hr>
-
-          <label for="pid"><b>Portfolio ID</b></label>
-          <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
-
-          <label for="osym"><b>Stock SYM</b></label>
-          <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
-
-          <label for="otype"><b>Type</b></label>
-          <input type="text" placeholder="Sell/Buy" name="otype" required>
-
-          <div class="clearfix">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signupbtn">Submit</button>
-        </div>
-    </div>
-</form>
-</div>
 
 <div class="ordert">
     <div class="search">
@@ -91,6 +68,32 @@
     </td>
 </tr>
 </table>
+</div>
+
+<button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Order</button>
+
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content" action="/action_page.php">
+        <div class="container">
+          <hr>
+
+          <label for="pid"><b>Portfolio ID</b></label>
+          <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
+
+          <label for="osym"><b>Stock SYM</b></label>
+          <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
+
+          <label for="otype"><b>Type</b></label>
+          <input type="text" placeholder="Sell/Buy" name="otype" required>
+
+          <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Submit</button>
+            <hr>
+        </div>
+    </div>
+</form>
 </div>
 
 
