@@ -11,34 +11,29 @@ def home():
     return render_template('index.html')
 
 # Def the Invesstors page
-@app.route("/Investors")
+@app.route("/investors")
 def investors():
-    return "Investors page"
+    return render_template('investors.html')
 
 # Def the Portfolios page
-@app.route("/Portfolios")
+@app.route("/portfolios")
 def portfolios():
-    return "Portfolios page"
+    return render_template('portfolios.html')
 
 # Def the Companies page
-@app.route("/Companies")
+@app.route("/etfs")
 def companies():
-    return "Companies page"
+    return render_template('etfs.html')
 
 # Def the Stocks page
-@app.route("/Stocks")
+@app.route("/stocks")
 def stocks():
-    return "Stocks page"
+    return render_template('stocks.html')
 
 # Def the Orders page
-@app.route("/Orders")
+@app.route("/orders")
 def orders():
-    return "Orders page"
-
-# Def the Order_Details page
-@app.route("/Order_Details")
-def orders_details():
-    return "Order_Details page"
+    return render_template('orders.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
