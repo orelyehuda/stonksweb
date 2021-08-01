@@ -19,10 +19,8 @@ def home():
 # Def the Stocks page
 @app.route("/stocks", methods=['POST','GET'])
 def stocks():
-
     # GET --> requestes data from the db
     if request.method == "GET":
-
     	print("Fetching and rendering stocks web page")
     	query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
     	result = db.execute_query(db_connection, query).fetchall()
@@ -38,14 +36,14 @@ def add_stock():
     sharep = request.form['shareprice']
     marketc = request.form['marketcap']
  
-    query = 'INSERT INTO Stocks (stock_id, company_id, stock_symbol, share_price, market_cap) VALUES (%s,%s,%s,%s,%s)'
+    query = 'INSERT INTO Stocks (company_id, stock_symbol, share_price, market_cap) VALUES (%s,%s,%s,%s)'
     data = (str(cid), str(stocksy), str(sharep), str(marketc))
     db.execute_query(db_connection, query, data)
 
     query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
     result = db.execute_query(db_connection, query).fetchall()
     print(result)
-    return render_template('stocks.html', stock_rows=result)
+    return redirect(request.referrer)
 
 # Def the Invesstors page
 @app.route("/investors")
@@ -67,7 +65,11 @@ def companies():
 def orders():
     return render_template('orders.html')
 
-# Listener
+
+def redirect_url(default='index'):
+    return request.args.get('next') or \
+        request.referrer or \
+        url_for(default)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 9112))

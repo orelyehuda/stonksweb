@@ -12,7 +12,7 @@ VALUES -- (:investor_id_input, :portfolio_id_input, :first_name_input, :last_nam
 
 INSERT INTO Companies (company_id, ceo, headquarter, number_employee)
 VALUES -- (:company_id_input, :ceo_input, :headquarter_input, :number_employee_input)
-(101, 'Matthew Furlong', 'Grapevine, Texas', 12000),
+(101, 'Matthew Furlong', 'Grapevine, Texas', 12000);,
 (102, 'Adam M. Aron', 'Leawood, Kansas', 28468),
 (103, 'David B. Baszucki', 'San Mateo, California', 1054);
 
