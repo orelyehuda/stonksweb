@@ -2,70 +2,63 @@
 <html lang="en" dir="ltr">
 <head>
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/csstyle.css') }}">
-    <meta charset="utf-8">
- <div class="topnav">
-        <a href="http://localhost:5000/index.html">Home</a>
-        <a href="http://localhost:5000/investors">Investors</a>
-        <a href="http://localhost:5000/portfolios">Portfolios</a>
-        <a href="http://localhost:5000/etfs">ETFs</a>
-        <a class="active" href="http://localhost:5000/stocks">Stocks</a>
-        <a href="http://localhost:5000/orders">Orders</a>
+  <meta charset="utf-8">
+  <div class="topnav">
+    <a href="http://localhost:5000/index.html">Home</a>
+    <a href="http://localhost:5000/investors">Investors</a>
+    <a href="http://localhost:5000/portfolios">Portfolios</a>
+    <a href="http://localhost:5000/etfs">ETFs</a>
+    <a class="active" href="http://localhost:5000/stocks">Stocks</a>
+    <a href="http://localhost:5000/orders">Orders</a>
 </div>
-    <title>Stocks</title>
+<title>Stocks</title>
 </head>
 <body>
 
     <h1>Stocks</h1>
     
 
-<div class="ordert">
-    <div class="search">
-        <input type="text" class="searchTerm" placeholder="Search by Stock Symbol">
-        <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-        </button>
-    </div>
-    <table>
-        <tr>
-            <th>Stock ID</th>
-            <th>Company ID</th>
-            <th>Stock Symbol</th>
-            <th>Share Price</th>
-            <th>Market Cap</th>
+    <div class="ordert">
+        <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search by Stock Symbol">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+    <!-- Iterate through each key in the first entry to get the
+        column name -->
+        {% for key in stock_rows[0].keys() %}
 
-        </tr>
+    <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
+
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+        <!-- Now, iterate through every stock in stock_rows -->
+        {% for stock in stock_rows %}
         <tr>
-            <td>1</td>
-            <td>101</td>
-            <td>GME</td>
-            <td>172.99</td>
-            <td>22.08B</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtnc">Delete</button> </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>102</td>
-            <td>AMC</td>
-            <td>34.92</td>
-            <td>26.56B</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtnc">Delete</button> </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>103</td>
-            <td>RBLX</td>
-            <td>79.50</td>
-            <td>53.41B</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtnc">Delete</button> </td>
-        </tr>
-    </td>
-</tr>
-</table>
-</div>
-<button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Stock</button>
+            <!-- Then iterate through every key in the current stock dictionary -->
+            {% for key in stock.keys() %}
+
+            <!-- Create a <td> element with the value of that key in it -->
+                <td>{{stock[key]}} </td>
+                {% endfor %}
+                <td><button class="tablebtn">Update</button> </td>
+                <td><button class="tablebtnc">Delete</button> </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+    <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Stock</button>
 
     <div id="id01" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -85,37 +78,8 @@
         </div>
     </div>
 </form>
+
 </div>
-
-<table>
-<thead>
-<tr>
-    <!-- Iterate through each key in the first entry to get the
-    column name -->
-    {% for key in stonks_stocks[0].keys() %}
-
-    <!-- Create a <th> tag with the key inside of it, this will be
-    our header row -->
-    <th>{{ key }}</th>
-
-    <!-- End of this for loop -->
-    {% endfor %}
-</tr>
-<tbody>
-
-<!-- Now, iterate through every person in bsg_people -->
-{% for stock in stonks_stocks %}
-<tr>
-    <!-- Then iterate through every key in the current person dictionary -->
-    {% for key in stock.keys() %}
-
-    <!-- Create a <td> element with the value of that key in it -->
-    <td>{{stock[key]}}</td>
-    {% endfor %}
-</tr>
-{% endfor %}
-</table>
-
 
 <script>
     var modal = document.getElementById('id01');

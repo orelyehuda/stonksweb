@@ -17,10 +17,11 @@ def home():
 # Def the Stocks page
 @app.route("/stocks")
 def stocks():
-	query = "SELECT * FROM Stocks;"
-	cursor = db.execute_query(db_connection=db_connection, query=query)
-	results = cursor.fetchall()
-	return render_template('stocks.html',stonks_stocks=results)
+	print("Fetching and rendering stocks web page")
+	query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
+	result = db.execute_query(db_connection, query).fetchall()
+	print(result)
+	return render_template('stocks.html', stock_rows=result)
 
 # Def the Invesstors page
 @app.route("/investors")

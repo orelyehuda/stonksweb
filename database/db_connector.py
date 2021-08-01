@@ -1,5 +1,6 @@
 import MySQLdb
 import os
+import dotenv
 from dotenv import load_dotenv, find_dotenv
 
 # Load our environment variables from the .env file in the root of our project.
@@ -14,8 +15,11 @@ db = os.environ.get("340DB")
 def connect_to_database(host = host, user = user, passwd = passwd, db = db):
     '''
     connects to a database and returns a database objects
+
     '''
-    db_connection = MySQLdb.connect(host,user,passwd,db)
+    db_connection=MySQLdb.connect(passwd="password",db="stonks",host="localhost",port=5000,user="newuser")
+
+    #db_connection = MySQLdb.connect(host,user,passwd,db)
     return db_connection
 
 def execute_query(db_connection = None, query = None, query_params = ()):
@@ -58,9 +62,3 @@ def execute_query(db_connection = None, query = None, query_params = ()):
 if __name__ == '__main__':
     print("Executing a sample query on the database using the credentials from db_credentials.py")
     db = connect_to_database()
-    query = "SELECT * from Stocks;"
-    results = execute_query(db, query);
-    print("Printing results of %s" % query)
-
-    for r in results.fetchall():
-        print(r)
