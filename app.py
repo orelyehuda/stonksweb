@@ -1,4 +1,6 @@
 from flask import Flask, render_template, json
+from flask import request, redirect
+
 import os
 import database.db_connector as db
 
@@ -15,13 +17,35 @@ def home():
     return render_template('index.html')
 
 # Def the Stocks page
-@app.route("/stocks")
+@app.route("/stocks", methods=['POST','GET'])
 def stocks():
-	print("Fetching and rendering stocks web page")
-	query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
-	result = db.execute_query(db_connection, query).fetchall()
-	print(result)
-	return render_template('stocks.html', stock_rows=result)
+
+    # GET --> requestes data from the db
+    if request.method == "GET":
+
+    	print("Fetching and rendering stocks web page")
+    	query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
+    	result = db.execute_query(db_connection, query).fetchall()
+    	print(result)
+    	return render_template('stocks.html', stock_rows=result)
+
+# Def the add_stock webpage that is used to add a new stock
+@app.route("/add_stock", methods=['POST','GET'])
+def add_stock():
+    print("added stock!")
+    cid = request.form['companyid']
+    stocksy = request.form['stocksym']
+    sharep = request.form['shareprice']
+    marketc = request.form['marketcap']
+ 
+    query = 'INSERT INTO Stocks (stock_id, company_id, stock_symbol, share_price, market_cap) VALUES (%s,%s,%s,%s,%s)'
+    data = (str(cid), str(stocksy), str(sharep), str(marketc))
+    db.execute_query(db_connection, query, data)
+
+    query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
+    result = db.execute_query(db_connection, query).fetchall()
+    print(result)
+    return render_template('stocks.html', stock_rows=result)
 
 # Def the Invesstors page
 @app.route("/investors")

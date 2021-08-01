@@ -6,8 +6,8 @@
 
  For Local Devlelopment
 host = 'localhost'
-user = 'root'                                   # can be different if you set up another username in your MySQL installation
-passwd = 'pass'                        # set accordingly
+user = 'newuser'                                   # can be different if you set up another username in your MySQL installation
+passwd = 'password'                        # set accordingly
 db = 'stonks'
 
 
