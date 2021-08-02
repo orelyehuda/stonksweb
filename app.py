@@ -27,7 +27,6 @@ def stocks():
     	print(result)
     	return render_template('stocks.html', stock_rows=result)
 
-
 # Def the add_stock webpage that is used to add a new stock
 @app.route("/add_stock", methods=['POST','GET'])
 def add_stock():
@@ -41,9 +40,6 @@ def add_stock():
     data = (str(cid), str(stocksy), str(sharep), str(marketc))
     db.execute_query(db_connection, query, data)
 
-    query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
-    result = db.execute_query(db_connection, query).fetchall()
-    print(result)
     return redirect(request.referrer)
 
 
@@ -71,9 +67,6 @@ def add_order():
     data = (str(pid), str(stocksy), str(otype))
     db.execute_query(db_connection, query, data)
 
-    query = "SELECT order_id, portfolio_id, stock_symbol, order_type, order_date_time, order_status from Orders;"
-    result = db.execute_query(db_connection, query).fetchall()
-    print(result)
     return redirect(request.referrer)
 
 # Def the Portfolios page
@@ -98,16 +91,36 @@ def add_portfolio():
     data = [bpower]
     db.execute_query(db_connection, query, data)
 
-    query = "SELECT portfolio_id, buying_power, date_created from Portfolios;"
-    result = db.execute_query(db_connection, query).fetchall()
-    print(result)
     return redirect(request.referrer)
 
 
-# Def the Invesstors page
+# Def the Investors page
 @app.route("/investors")
 def investors():
-    return render_template('investors.html')
+    # GET --> requestes data from the db
+    if request.method == "GET":
+        print("Fetching and rendering investors web page")
+
+        query = "SELECT investor_id, portfolio_id, first_name, last_name, email from Investors"
+        result = db.execute_query(db_connection, query).fetchall()
+        print(result)
+        return render_template('investors.html', investor_rows=result)
+
+# Def the add_investor webpage that is used to add a new portfolio
+@app.route("/add_investor", methods=['POST','GET'])
+def add_investor():
+    print("added investor!")
+    pid = request.form['pid']
+    fname = request.form['fname']
+    lname = request.form['lname']
+    email = request.form['email']
+
+    query = 'INSERT INTO Investors (portfolio_id, first_name, last_name, email) VALUES (%s, %s, %s, %s);'
+    data = (str(pid), str(fname), str(lname), str(email))
+    db.execute_query(db_connection, query, data)
+
+    return redirect(request.referrer)
+
 
 # Def the Companies page
 @app.route("/etfs")
