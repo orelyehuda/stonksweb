@@ -19,10 +19,19 @@
     
 
     <div class="ordert">
-        <div class="search">
-            <input type="text" class="searchTerm" placeholder="Search by Stock Symbol" name="stock_filter">
-            <button type="submit" class="searchButton"></button>
-        </div>
+
+    <form class="modal-content" method="POST">
+        <label for="sortby">Sort By:</label>
+          <select name="sortby" id="sortby" class="sortselect">
+            <option value="Price">Price</option>
+            <option value="Market_Cap">Market Cap</option>
+            <option value="Stock_ID">Stock ID</option>
+          </select>
+          <br><br>
+            <button type="submit" class="signupbtn">Sort</button>
+        </form>
+
+
         <table>
             <thead>
                 <tr>

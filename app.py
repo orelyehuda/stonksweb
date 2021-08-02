@@ -21,11 +21,29 @@ def home():
 def stocks():
     # GET --> requestes data from the db
     if request.method == "GET":
-    	print("Fetching and rendering stocks web page")
-    	query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks;"
-    	result = db.execute_query(db_connection, query).fetchall()
-    	print(result)
-    	return render_template('stocks.html', stock_rows=result)
+        print("Fetching and rendering stocks web page")
+        query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by stock_id;"
+        result = db.execute_query(db_connection, query).fetchall()
+        print(result)
+        return render_template('stocks.html', stock_rows=result)
+
+    if request.method == "POST":
+        print(request.form['sortby'])
+
+        val  = request.form['sortby']
+
+        if(str(val) == 'Price'):
+            query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by share_price;"
+        elif(str(val) == "Market_Cap"):
+            query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by stock_symbol;"
+        elif(str(val) == "Stock_ID"):
+            query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by stock_id;"
+        else:
+            query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by company_id;"
+
+        result = db.execute_query(db_connection, query).fetchall()
+        print(result)
+        return render_template('stocks.html', stock_rows=result)
 
 # Def the add_stock webpage that is used to add a new stock
 @app.route("/add_stock", methods=['POST','GET'])
