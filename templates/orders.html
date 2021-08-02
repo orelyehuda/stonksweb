@@ -26,55 +26,44 @@
         </button>
     </div>
     <table>
-        <tr>
-            <th>Order ID</th>
-            <th>Portfolio ID</th>
-            <th>Order Sym</th>
-            <th>Order Type</th>
-            <th>Order Date</th>
-            <th>Order Status</th>
+            <thead>
+                <tr>
+    <!-- Iterate through each key in the first entry to get the
+        column name -->
+        {% for key in order_rows[0].keys() %}
 
-        </tr>
+    <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
+
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+        <!-- Now, iterate through every stock in stock_rows -->
+        {% for order in order_rows %}
         <tr>
-            <td>1</td>
-            <td>1001</td>
-            <td>GME</td>
-            <td>Buy</td>
-            <td>2021-05-05</td>
-            <td>Pending</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtnc">Delete</button> </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>1001</td>
-            <td>AMC</td>
-            <td>Buy</td>
-            <td>2021-04-10</td>
-            <td>Filled</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtnc">Delete</button> </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>1002</td>
-            <td>RBLX</td>
-            <td>Buy</td>
-            <td>2021-02-01</td>
-            <td>Filled</td>
-            <td><button class="tablebtn">Update</button> </td>
-            <td><button class="tablebtnc">Delete</button> </td>
-        </tr>
-    </td>
-</tr>
-</table>
+            <!-- Then iterate through every key in the current stock dictionary -->
+            {% for key in order.keys() %}
+
+            <!-- Create a <td> element with the value of that key in it -->
+                <td>{{order[key]}} </td>
+                {% endfor %}
+                <td><button class="tablebtn">Update</button> </td>
+                <td><button class="tablebtnc">Delete</button> </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
 </div>
 
 <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Order</button>
 
     <div id="id01" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content" action="/action_page.php">
+       <form class="modal-content" action="/add_order" method="POST">
         <div class="container">
           <hr>
 
@@ -82,11 +71,14 @@
           <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
 
           <label for="osym"><b>Stock SYM</b></label>
-          <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
+          <input type="text" placeholder="Enter the Stock SYM" name="stocksym" required>
 
-          <label for="otype"><b>Type</b></label>
-          <input type="text" placeholder="Sell/Buy" name="otype" required>
-
+          <label for="otype">Buy/Sell</label>
+          <select name="otype" id="otype">
+            <option value="Buy">Buy</option>
+            <option value="Sell">Sell</option>
+          </select>
+          <br><br>
           <div class="clearfix">
             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
             <button type="submit" class="signupbtn">Submit</button>

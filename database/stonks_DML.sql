@@ -22,11 +22,11 @@ VALUES -- (:stock_id_input, :company_id_input, :stock_symbol_input, :share_price
 (2, 102, 'AMC', 34.92, 26.56),
 (3, 103, 'RBLX', 79.50, 53.41);
 
-INSERT INTO Orders (order_id, portfolio_id, order_type, order_date_time, order_status)
+INSERT INTO Orders (order_id, portfolio_id,stock_symbol, order_type, order_date_time, order_status)
 VALUES -- (:order_id_input, :portfolio_id_input, :order_type_input, :order_date_time_input, :order_status_input)
-(1, 1, 'Buy', '2021-05-05', 'Pending'),
-(2, 1, 'Buy', '2021-04-10', 'Filled'),
-(3, 2, 'Buy', '2021-02-01', 'Filled');
+(1, 1, 'GME', 'Buy', '2021-05-05', 'Pending'),
+(2, 1, 'AMC', 'Buy','2021-04-10', 'Filled'),
+(3, 2, 'BBL', 'Buy', '2021-02-01', 'Filled');
 
 INSERT INTO Order_Details (order_id, stock_id, quantity)
 VALUES -- (:order_id_input, :stock_id_input, :quantity_input)
