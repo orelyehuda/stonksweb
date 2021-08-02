@@ -14,3 +14,5 @@ How to add a new user and add privliges:
 (this is what I used)
 
 https://howchoo.com/webdev/how-to-add-a-mysql-user-and-grant-privileges
+
+mysql -u newuser -p  stonks < /Users/orelyehuda/stonksweb/database/stonks_db.sql

@@ -27,42 +27,49 @@
             <button type="submit" class="searchbtn">Find Portfolio</button> 
         </div>
     
-    <table>
-        <tr>
-            <th>Portfolio ID</th>
-            <th>Buying Power ($)</th>
-            <th>Date Created (YYYY-MM-DD)</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>20133.76</td>
-            <td>2020-03-15</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>334.44</td>
-            <td>2019-02-22</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>120432.12</td>
-            <td>2021-06-04</td>
-        </tr>
+   <table>
+            <thead>
+                <tr>
+    <!-- Iterate through each key in the first entry to get the
+        column name -->
+        {% for key in portfolio_rows[0].keys() %}
 
-    </table>
+    <!-- Create a <th> tag with the key inside of it, this will be
+        our header row -->
+        <th>{{ key }}</th>
+
+        <!-- End of this for loop -->
+        {% endfor %}
+    </tr>
+    <tbody>
+
+        <!-- Now, iterate through every portfolio in stock_rows -->
+        {% for portfolio in portfolio_rows %}
+        <tr>
+            <!-- Then iterate through every key in the current portfolio dictionary -->
+            {% for key in portfolio.keys() %}
+
+            <!-- Create a <td> element with the value of that key in it -->
+                <td>{{portfolio[key]}} </td>
+                {% endfor %}
+                <td><button class="tablebtn">Update</button> </td>
+                <td><button class="tablebtnc">Delete</button> </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
     <button align="center" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">New Portfolio</button>
 
     <div id="id01" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content" action="/action_page.php">
+      <form class="modal-content" action="/add_portfolio" method="POST">
         <div class="container">
 
             <hr>
-            <label for="pid"><b>Investor ID</b></label>
-            <input type="text" placeholder="Enter the Portfolio ID" name="pid" required>
 
             <label for="osym"><b>Buying Power</b></label>
-            <input type="text" placeholder="Enter the Stock SYM" name="osym" required>
+            <input type="text" placeholder="Enter the Buying Power" name="buyp" required>
 
             <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>

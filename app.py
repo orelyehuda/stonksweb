@@ -27,6 +27,7 @@ def stocks():
     	print(result)
     	return render_template('stocks.html', stock_rows=result)
 
+
 # Def the add_stock webpage that is used to add a new stock
 @app.route("/add_stock", methods=['POST','GET'])
 def add_stock():
@@ -46,7 +47,7 @@ def add_stock():
     return redirect(request.referrer)
 
 
-# Def the Stocks page
+# Def the Orders page
 @app.route("/orders", methods=['POST','GET'])
 def orders():
     # GET --> requestes data from the db
@@ -58,7 +59,7 @@ def orders():
         print(result)
         return render_template('orders.html', order_rows=result)
 
-# Def the add_stock webpage that is used to add a new stock
+# Def the add_order webpage that is used to add a new order
 @app.route("/add_order", methods=['POST','GET'])
 def add_order():
     print("added order!")
@@ -75,16 +76,38 @@ def add_order():
     print(result)
     return redirect(request.referrer)
 
+# Def the Portfolios page
+@app.route("/portfolios")
+def portfolios():
+   # GET --> requestes data from the db
+    if request.method == "GET":
+        print("Fetching and rendering portfolios web page")
+
+        query = "SELECT portfolio_id, buying_power, date_created from Portfolios;"
+        result = db.execute_query(db_connection, query).fetchall()
+        print(result)
+        return render_template('portfolios.html', portfolio_rows=result)
+
+# Def the add_portfolio webpage that is used to add a new portfolio
+@app.route("/add_portfolio", methods=['POST','GET'])
+def add_portfolio():
+    print("added portfolio!")
+    bpower = request.form['buyp']
+
+    query = 'INSERT INTO Portfolios (buying_power) VALUES (%s);'
+    data = [bpower]
+    db.execute_query(db_connection, query, data)
+
+    query = "SELECT portfolio_id, buying_power, date_created from Portfolios;"
+    result = db.execute_query(db_connection, query).fetchall()
+    print(result)
+    return redirect(request.referrer)
+
 
 # Def the Invesstors page
 @app.route("/investors")
 def investors():
     return render_template('investors.html')
-
-# Def the Portfolios page
-@app.route("/portfolios")
-def portfolios():
-    return render_template('portfolios.html')
 
 # Def the Companies page
 @app.route("/etfs")

@@ -1,14 +1,18 @@
+DROP TABLE IF EXISTS `Order_Details`;
+DROP TABLE IF EXISTS `ETFs_Stocks`;
 DROP TABLE IF EXISTS `Orders`;
 DROP TABLE IF EXISTS `Investors`;
 DROP TABLE IF EXISTS `Portfolios`;
 DROP TABLE IF EXISTS `Stocks`;
 DROP TABLE IF EXISTS `Companies`;
+DROP TABLE IF EXISTS `ETFs`;
+
 
 
 CREATE TABLE Portfolios(
     portfolio_id int(11) UNIQUE AUTO_INCREMENT NOT NULL,
-    buying_power float,
-    date_created datetime NOT NULL,
+    buying_power float NOT NULL,
+    date_created datetime DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (portfolio_id)
 );
 INSERT INTO Portfolios (portfolio_id, buying_power, date_created) 
@@ -84,7 +88,6 @@ VALUES -- (:stock_id_input, :company_id_input, :stock_symbol_input, :share_price
 (3, 103, 'RBLX', 79.50, 53.41);
 
 
-DROP TABLE IF EXISTS `Order_Details`;
 CREATE TABLE Order_Details(
     order_id int(11) UNIQUE NOT NULL,
     stock_id int(11) NOT NULL,
@@ -93,14 +96,12 @@ CREATE TABLE Order_Details(
     FOREIGN KEY (stock_id) REFERENCES Stocks(stock_id)
 );
 
-DROP TABLE IF EXISTS `ETFs`;
 CREATE TABLE ETFs(
     etf_id int(11) UNIQUE AUTO_INCREMENT NOT NULL,
     etf_symbol varchar(255) UNIQUE NOT NULL,
     PRIMARY KEY (etf_id)
 );
 
-DROP TABLE IF EXISTS `ETFs_Stocks`;
 CREATE TABLE ETFs_Stocks(
     etf_id int(11) UNIQUE NOT NULL,
     stock_id int(11) UNIQUE NOT NULL,
