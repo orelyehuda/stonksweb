@@ -28,14 +28,12 @@ def stocks():
         return render_template('stocks.html', stock_rows=result)
 
     if request.method == "POST":
-        print(request.form['sortby'])
-
         val  = request.form['sortby']
 
         if(str(val) == 'Price'):
             query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by share_price;"
         elif(str(val) == "Market_Cap"):
-            query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by stock_symbol;"
+            query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by market_cap;"
         elif(str(val) == "Stock_ID"):
             query = "SELECT stock_id, company_id, stock_symbol, share_price, market_cap from Stocks order by stock_id;"
         else:
@@ -69,6 +67,22 @@ def orders():
         print("Fetching and rendering orders web page")
 
         query = "SELECT order_id, portfolio_id, stock_symbol, order_type, order_date_time, order_status from Orders;"
+        result = db.execute_query(db_connection, query).fetchall()
+        print(result)
+        return render_template('orders.html', order_rows=result)
+
+    if request.method == "POST":
+
+        val  = request.form['searchby']
+
+        if(str(val) == 'orderID'):
+            query = "SELECT order_id, portfolio_id, stock_symbol, order_type, order_date_time, order_status from Orders order by order_id;"
+        elif(str(val) == 'date'):
+            query = "SELECT order_id, portfolio_id, stock_symbol, order_type, order_date_time, order_status from Orders order by order_date_time;" 
+        elif(str(val) == 'portID'):
+            query = "SELECT order_id, portfolio_id, stock_symbol, order_type, order_date_time, order_status from Orders order by portfolio_id;"
+        elif(str(val) == 'ostat'):
+            query = "SELECT order_id, portfolio_id, stock_symbol, order_type, order_date_time, order_status from Orders order by order_status;"  
         result = db.execute_query(db_connection, query).fetchall()
         print(result)
         return render_template('orders.html', order_rows=result)

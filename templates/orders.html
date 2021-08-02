@@ -19,12 +19,18 @@
     <h1>Order History</h1>
 
 <div class="ordert">
-    <div class="search">
-        <input type="text" class="searchTerm" placeholder="Search order by order_id ">
-        <button type="submit" class="searchButton">
-            <i class="fa fa-search"></i>
-        </button>
-    </div>
+
+    <form class="modal-content" method="POST">
+        <label for="searchby">Sort By:</label>
+          <select name="searchby" id="searchby" class="sortselect">
+            <option value="orderID">Order ID</option>
+            <option value="date">Date</option>
+            <option value="portID">Portfolio ID</option>
+            <option value="ostat">Order Status</option>
+          </select>
+          <br><br>
+            <button type="submit" class="signupbtn">Sort</button>
+        </form>
     <table>
             <thead>
                 <tr>
